@@ -1,7 +1,8 @@
+# app.py
+
 from flask import Flask, request
 from messaging import send_daily_update
 from env_config import settings
-import os
 
 app = Flask(__name__)
 
@@ -17,7 +18,8 @@ def trigger():
     send_daily_update()
     return "Message sent successfully!"
 
+
 if __name__ == "__main__":
     import os
-    port = int(os.environ.get("PORT", 3000))  # Default to 3000 if PORT not set
+    port = int(os.environ.get("PORT", 3000))  # Required for Render deployment
     app.run(host="0.0.0.0", port=port)
