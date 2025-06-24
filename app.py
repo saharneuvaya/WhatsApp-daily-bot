@@ -18,5 +18,6 @@ def trigger():
     return "Message sent successfully!"
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Render sets this PORT
+    import os
+    port = int(os.environ.get("PORT", 3000))  # Default to 3000 if PORT not set
     app.run(host="0.0.0.0", port=port)
