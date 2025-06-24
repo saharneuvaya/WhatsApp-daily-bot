@@ -1,6 +1,7 @@
 from flask import Flask, request
 from messaging import send_daily_update
 from env_config import settings
+import os
 
 app = Flask(__name__)
 
@@ -15,3 +16,7 @@ def trigger():
         return "Invalid key", 403
     send_daily_update()
     return "Message sent successfully!"
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Render sets this PORT
+    app.run(host="0.0.0.0", port=port)
